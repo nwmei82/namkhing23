@@ -72,10 +72,12 @@ function openGift() {
   }
 }
 
-function openVideo() {
-  modal.value = "video";
-  videoWatched.value = true;
-}
+const openVideo = () => {
+  window.open(
+    "https://www.instagram.com/p/Dc-Fo0JT4Nk/?utm_source=ig_web_copy_link&stkn=NTc4MTIwNjQ2YQ==",
+    "_blank",
+  );
+};
 
 function openFlower() {
   modal.value = "flower";

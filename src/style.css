@@ -16,10 +16,13 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  /* prevent any absolutely-positioned element from creating horizontal scroll */
+  overflow-x: hidden;
 }
 
 button {
@@ -49,6 +52,7 @@ h2 {
   color: white;
   box-shadow: 0 8px 25px rgba(74, 48, 41, 0.18);
   transition: 0.25s ease;
+  min-height: 44px; /* touch target */
 }
 
 .primary-btn:hover {
@@ -160,8 +164,8 @@ h2 {
   color: #f5e8dc;
   font-family: "Playfair Display", serif;
   white-space: nowrap;
-  font-size: 17px;
-  padding: 12px;
+  font-size: clamp(11px, 1.6vw, 17px);
+  padding: clamp(8px, 1.2vw, 12px);
   background: #f9eee7;
   color: #76584f;
   text-align: center;
@@ -173,8 +177,8 @@ h2 {
   position: absolute;
   right: 12%;
   top: 52%;
-  width: 38px;
-  height: 38px;
+  width: clamp(28px, 5vw, 38px);
+  height: clamp(28px, 5vw, 38px);
   border: none;
   border-radius: 50%;
   background: #d9b77e;
@@ -215,33 +219,36 @@ h2 {
   top: 8%;
   right: 12%;
   color: #fff8ef;
-  font-size: 18px;
-  letter-spacing: 14px;
+  font-size: clamp(12px, 2vw, 18px);
+  letter-spacing: clamp(6px, 1.6vw, 14px);
   opacity: 0.8;
 }
 
 /* =========================
    PHOTO BOOTH
+   (fluid sizing so both strips stay proportional and
+   never overflow the door-scene on any screen width)
 ========================= */
 .photo-booth {
   position: absolute;
-  top: 7%;
-  left: 10%;
+  top: 6%;
+  left: 6%;
   transform: rotate(-6deg);
   z-index: 5;
 }
 
 .photo-booth2 {
   position: absolute;
-  top: 7%;
-  left: 20%;
+  top: 6%;
+  left: 17%;
   transform: rotate(10deg);
   z-index: 2;
 }
 
 .photo-strip {
-  width: 150px;
-  padding: 12px 12px 16px;
+  width: clamp(88px, 18vw, 150px);
+  padding: clamp(7px, 1.4vw, 12px) clamp(7px, 1.4vw, 12px)
+    clamp(9px, 1.8vw, 16px);
   background: #fffdf9;
   box-shadow: 0 12px 30px rgba(80, 50, 40, 0.16);
   border-radius: 4px;
@@ -249,8 +256,8 @@ h2 {
 
 .photo-slot {
   width: 100%;
-  height: 150px;
-  margin-bottom: 9px;
+  height: clamp(88px, 18vw, 150px);
+  margin-bottom: clamp(5px, 1vw, 9px);
   overflow: hidden;
   background: #eadbd4;
 }
@@ -266,7 +273,7 @@ h2 {
   padding-top: 5px;
   font-family: "Playfair Display", serif;
   text-align: center;
-  font-size: 9px;
+  font-size: clamp(7px, 1.2vw, 9px);
   letter-spacing: 1.5px;
   color: #735c54;
 }
@@ -276,7 +283,7 @@ h2 {
 ========================= */
 .girl {
   position: absolute;
-  right: 10%;
+  right: 6%;
   top: 15%;
   bottom: 50%;
   width: 100%;
@@ -288,7 +295,7 @@ h2 {
 }
 
 .girl img {
-  width: 300px;
+  width: clamp(150px, 26vw, 300px);
   height: auto;
   display: block;
   object-fit: contain;
@@ -296,8 +303,8 @@ h2 {
 }
 
 .birthday-text {
-  text-align: right; /* จัดข้อความชิดขวา */
-  font-size: clamp(32px, 4vw, 60px);
+  text-align: right;
+  font-size: clamp(24px, 4.5vw, 60px);
   margin-bottom: 0px;
 }
 
@@ -404,10 +411,10 @@ h2 {
   position: absolute;
   top: 11%;
   left: 8%;
-  width: 210px;
-  height: 165px;
+  width: clamp(110px, 20vw, 210px);
+  height: clamp(90px, 16vw, 165px);
   background: #6f7182;
-  border: 10px solid #9d755d;
+  border: clamp(6px, 1vw, 10px) solid #9d755d;
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
@@ -437,7 +444,7 @@ h2 {
   right: 22px;
   top: 18px;
   color: #f5dfb4;
-  font-size: 32px;
+  font-size: clamp(20px, 3vw, 32px);
 }
 
 .star {
@@ -463,13 +470,13 @@ h2 {
 .wall-frame {
   position: absolute;
   top: 18%;
-  right: 11%;
+  right: 8%;
 }
 
 .frame-button {
-  width: 145px;
-  height: 170px;
-  border: 12px solid #a97954;
+  width: clamp(90px, 18vw, 145px);
+  height: clamp(105px, 21vw, 170px);
+  border: clamp(7px, 1.2vw, 12px) solid #a97954;
   background: #6e7278;
   box-shadow: 0 12px 20px rgba(65, 45, 38, 0.18);
 }
@@ -480,7 +487,7 @@ h2 {
   width: 100%;
   height: 100%;
   color: #f5eee8;
-  font-size: 52px;
+  font-size: clamp(28px, 6vw, 52px);
   background: linear-gradient(145deg, #8b9aa0, #d7c2b1);
 }
 
@@ -490,8 +497,10 @@ h2 {
   left: 50%;
   bottom: -8%;
 
-  width: 80%;
+  width: 90%;
+  max-width: 900px;
   height: 42%;
+  min-height: 220px;
 
   transform: translateX(-50%);
 
@@ -573,6 +582,8 @@ h2 {
 
 /* ========================================
    OBJECTS
+   (widths are fluid: clamp(min, vw, max) so they scale
+   down smoothly on phones/tablets instead of overflowing)
 ======================================== */
 
 .table-object {
@@ -612,10 +623,10 @@ h2 {
 ======================================== */
 
 .flower-button {
-  left: 25%;
+  left: 22%;
   bottom: 28%;
 
-  width: 330px;
+  width: clamp(130px, 30vw, 330px);
 
   transform: rotate(-5deg);
 
@@ -627,10 +638,10 @@ h2 {
 ======================================== */
 
 .gift-button {
-  right: 28%;
+  right: 25%;
   bottom: 25%;
 
-  width: 300px;
+  width: clamp(115px, 27vw, 300px);
 
   z-index: 31;
 }
@@ -639,7 +650,7 @@ h2 {
   left: 45%;
   top: 30%;
 
-  width: 150px;
+  width: clamp(65px, 13vw, 150px);
   z-index: 32;
   transform: perspective(600px) rotateX(-8deg) rotateZ(4deg);
 }
@@ -720,7 +731,7 @@ h2 {
   overflow: auto;
   background: #fffaf5;
   border-radius: 24px;
-  padding: 38px;
+  padding: clamp(20px, 5vw, 38px);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
   text-align: center;
   position: relative;
@@ -734,11 +745,13 @@ h2 {
   background: transparent;
   font-size: 30px;
   color: #80685c;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .modal h2 {
   margin: 0 0 8px;
-  font-size: 32px;
+  font-size: clamp(22px, 4.5vw, 32px);
 }
 
 .modal-subtitle {
@@ -747,7 +760,7 @@ h2 {
 }
 
 .puzzle {
-  width: min(320px, 80vw);
+  width: min(320px, 78vw);
   aspect-ratio: 1;
   margin: 20px auto 15px;
   display: grid;
@@ -765,7 +778,7 @@ h2 {
   border-radius: 10px;
   background: linear-gradient(145deg, #d79e91, #a9776e);
   color: #ffffff;
-  font-size: 24px;
+  font-size: clamp(16px, 4vw, 24px);
   font-weight: bold;
   cursor: pointer;
   display: flex;
@@ -795,6 +808,7 @@ h2 {
 }
 .puzzle-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
   margin-top: 12px;
@@ -813,6 +827,7 @@ h2 {
   background: transparent;
   color: #936b5d;
   text-decoration: underline;
+  min-height: 44px;
 }
 
 .coupons {
@@ -841,12 +856,15 @@ h2 {
 .coupon strong {
   display: block;
   font-family: "Playfair Display", serif;
-  font-size: 20px;
+  font-size: clamp(16px, 3.5vw, 20px);
   margin: 22px 0 8px;
 }
 
 .coupon-img {
-  height: 250px;
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: contain;
 }
 
 .video-placeholder {
@@ -889,13 +907,16 @@ h2 {
 }
 
 .bouquet-placeholder {
-  height: 250px;
+  height: clamp(160px, 40vw, 250px);
   font-size: 70px;
   line-height: 1.1;
 }
 
 .bouquet-placeholder img {
-  height: 250px;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .reveal-text {
@@ -915,7 +936,7 @@ h2 {
   width: min(880px, 94vw);
   max-height: 92vh;
   overflow: auto;
-  padding: 55px clamp(30px, 8vw, 80px);
+  padding: clamp(30px, 6vw, 55px) clamp(20px, 8vw, 80px);
   background:
     radial-gradient(
       circle at 20% 10%,
@@ -938,7 +959,10 @@ h2 {
 
 .paper img {
   align-items: center;
-  height: 600px;
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
   left: 0px;
 }
 
@@ -952,116 +976,107 @@ h2 {
   z-index: 2;
 }
 
-/* =========================
-   RESPONSIVE (MOBILE)
-========================= */
-@media (max-width: 700px) {
-  .photo-booth {
-    top: 5%;
-    left: 5%;
-    transform: rotate(-5deg) scale(0.75);
-    transform-origin: top left;
+/* =========================================================
+   RESPONSIVE — PHONE (≤ 600px)
+   Most sizes above already flex with clamp()/vw, so this
+   block mainly re-arranges layout: stacks the two photo
+   strips instead of overlapping, tightens the room/table
+   layout, and switches the coupon grid to one column.
+========================================================= */
+@media (max-width: 600px) {
+  .door-scene {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .sparkles {
+    top: 4%;
+    right: 6%;
+  }
+
+  /* Screen is too narrow for the photo strips + caption text
+     alongside the door and the girl — drop them and keep just
+     the girl illustration so nothing overlaps or gets crushed */
+  .photo-booth,
+  .photo-booth2,
+  .birthday-text {
+    display: none;
   }
 
   .door {
-    width: 68vw;
-    height: 52vh;
-    align-self: start;
-    margin-top: 8vh;
-  }
-
-  .door-sign {
-    font-size: 13px;
-  }
-
-  .open-door-btn {
-    bottom: 5%;
-  }
-
-  .intro-copy {
-    left: 24px;
-    right: 24px;
-    bottom: 7vh;
-    text-align: center;
-    max-width: none;
-  }
-
-  .intro-copy h1 {
-    font-size: 34px;
+    width: 66vw;
+    height: 48vh;
+    margin-top: 10vh;
   }
 
   .girl {
-    transform: scale(0.72);
-    right: 2%;
-    bottom: 27%;
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 4%;
+    width: 100%;
+    align-items: center;
+  }
+
+  .girl img {
+    width: clamp(150px, 42vw, 220px);
+  }
+
+  .open-door-btn {
+    bottom: 4%;
   }
 
   .room-header {
+    left: 16px;
+    right: 16px;
+    top: 14px;
     font-size: 10px;
   }
 
   .window {
-    width: 125px;
-    height: 100px;
-    top: 13%;
+    top: 6%;
     left: 5%;
   }
 
   .wall-frame {
-    top: 15%;
-    right: 7%;
-  }
-
-  .frame-button {
-    width: 90px;
-    height: 110px;
-    border-width: 7px;
-  }
-
-  .flowers {
-    left: 4%;
-    bottom: 31%;
-  }
-
-  .flower-art {
-    font-size: 45px;
+    top: 8%;
+    right: 5%;
   }
 
   .table {
-    width: 88%;
-    min-width: 0;
-    bottom: 21%;
+    width: 94%;
+    bottom: 2%;
+    height: 46%;
+    min-height: 190px;
   }
 
-  .table-top {
-    height: 125px;
+  .flower-button {
+    left: 6%;
+    bottom: 22%;
   }
 
   .gift-button {
-    left: 17%;
-    font-size: 65px;
+    right: 8%;
+    bottom: 18%;
   }
 
   .letter-button {
-    right: 15%;
+    left: 50%;
+    top: 12%;
+    transform: translateX(-50%) perspective(600px) rotateX(-8deg) rotateZ(4deg);
   }
 
-  .letter-paper {
-    font-size: 34px;
-    padding: 10px 14px;
-  }
-
-  .room-tip {
-    font-size: 9px;
-    bottom: 9px;
+  .letter-button:hover {
+    transform: translateX(-50%) rotate(-5deg) translateY(-8px) scale(1.04);
   }
 
   .modal {
-    padding: 30px 20px;
+    padding: 22px 16px;
+    border-radius: 18px;
   }
 
   .modal h2 {
-    font-size: 26px;
+    font-size: 22px;
   }
 
   .coupons {
@@ -1069,18 +1084,116 @@ h2 {
   }
 
   .coupon {
-    height: 105px;
+    min-height: auto;
   }
 
   .video-placeholder {
-    min-height: 230px;
+    min-height: 200px;
   }
 
   .paper {
-    padding: 45px 30px;
+    padding: 30px 18px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .photo-booth {
+    top: 10%;
+    left: 4%;
+    transform: rotate(-6deg) scale(0.85);
+    transform-origin: top left;
   }
 
-  .paper h2 {
-    font-size: 30px;
+  .photo-booth2 {
+    top: 5%;
+    left: 15%;
+    transform: rotate(9deg) scale(0.85);
+    transform-origin: top left;
+  }
+
+  .door {
+    width: 46vw;
+    height: 62vh;
+  }
+
+  .girl {
+    right: 5%;
+  }
+
+  .girl img {
+    width: clamp(160px, 24vw, 230px);
+  }
+
+  .birthday-text {
+    font-size: clamp(26px, 4.2vw, 40px);
+  }
+
+  .window {
+    left: 6%;
+  }
+
+  .wall-frame {
+    right: 6%;
+  }
+
+  .table {
+    width: 92%;
+    height: 40%;
+  }
+
+  .flower-button {
+    left: 14%;
+    bottom: 24%;
+  }
+
+  .gift-button {
+    right: 16%;
+    bottom: 20%;
+  }
+
+  .letter-button {
+    left: 45%;
+    top: 20%;
+  }
+
+  .modal {
+    width: min(560px, 92%);
+  }
+
+  .coupons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .coupon {
+    min-height: 130px;
+  }
+}
+
+/* Landscape phones (short viewport height) — shrink the door
+   scene vertically so the door/girl/photo strips all fit
+   without being clipped */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+  .door {
+    height: 82vh;
+  }
+
+  .girl {
+    top: 8%;
+    bottom: auto;
+  }
+
+  .photo-booth,
+  .photo-booth2 {
+    margin-top: 20%;
+    transform: scale(0.6);
+  }
+
+  .photo-booth {
+    transform-origin: top left;
+  }
+
+  .photo-booth2 {
+    transform-origin: top right;
   }
 }
