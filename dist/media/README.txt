@@ -1,0 +1,1 @@
+Put your birthday video and flower photo in this folder. See the project README.
